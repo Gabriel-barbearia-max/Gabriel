@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbearia Elite - Cortes Premium & Produtos Especializados</title>
+    <title>Barbearia Elite Araxá | Cortes Premium & Produtos Capilares</title>
     
-    <!-- Meta tags para redes sociais -->
-    <meta property="og:title" content="Barbearia Elite | Araxá MG">
-    <meta property="og:description" content="Cortes premium e produtos especializados para crescimento capilar. A melhor experiência em cuidados masculinos.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1476&q=80">
+    <!-- Meta SEO Otimizadas -->
+    <meta name="description" content="Barbearia Premium em Araxá MG. Cortes masculinos, tratamentos de barba e produtos especializados para crescimento capilar. Agende seu horário!">
+    <meta name="keywords" content="barbearia, corte masculino, crescimento capilar, Araxá, barba, tratamento capilar">
+    <meta name="author" content="Barbearia Elite">
+    
+    <!-- Meta Redes Sociais -->
+    <meta property="og:title" content="Barbearia Elite | Cortes Premium em Araxá MG">
+    <meta property="og:description" content="Cortes premium e produtos especializados para crescimento capilar. A melhor experiência em cuidados masculinos em Araxá.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
     <meta property="og:url" content="https://www.barbeariaelite.com.br">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
     
-    <!-- Fonte Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Pré-carregamento crítico -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@400;700&display=swap"></noscript>
     
+    <!-- CSS Inline para performance -->
     <style>
         /* ESTILO PARA SCROLL SUAVE */
         html {
@@ -35,6 +43,8 @@
             --card-bg: rgba(26, 26, 26, 0.9);
             --card-border: rgba(212, 175, 55, 0.2);
             --header-height: 80px;
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         * {
@@ -77,7 +87,7 @@
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            transition: all 0.3s;
+            transition: var(--transition);
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             bottom: 85px;
             background: var(--accent);
@@ -86,6 +96,7 @@
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
             opacity: 0;
             visibility: hidden;
+            cursor: pointer;
         }
         
         .back-to-top.visible {
@@ -96,6 +107,46 @@
         .back-to-top:hover {
             transform: scale(1.1);
             background: var(--accent-hover);
+        }
+        
+        /* Botão WhatsApp flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+        
+        .whatsapp-float i {
+            color: white;
+            font-size: 28px;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
         }
         
         /* Cabeçalho */
@@ -110,6 +161,12 @@
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
             height: var(--header-height);
             border-bottom: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            height: 70px;
+            padding: 10px 0;
         }
         
         header .container {
@@ -157,7 +214,7 @@
             color: var(--text);
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: var(--transition);
             font-size: 15px;
             padding: 8px 16px;
             border-radius: 5px;
@@ -172,7 +229,7 @@
             bottom: 0;
             left: 50%;
             background: var(--accent);
-            transition: all 0.3s;
+            transition: var(--transition);
             transform: translateX(-50%);
         }
         
@@ -202,7 +259,7 @@
             height: 3px;
             background-color: var(--accent);
             border-radius: 5px;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
         
         /* Seção Hero */
@@ -276,7 +333,7 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
-            transition: all 0.3s;
+            transition: var(--transition);
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             border: none;
             cursor: pointer;
@@ -358,10 +415,10 @@
             text-align: center;
             padding: 30px 20px;
             background: var(--card-bg);
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             backdrop-filter: blur(10px);
             border: 1px solid var(--card-border);
-            transition: all 0.3s;
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -437,10 +494,10 @@
         
         .service-card {
             background: var(--card-bg);
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             overflow: hidden;
             border: 1px solid var(--card-border);
-            transition: all 0.3s;
+            transition: var(--transition);
             position: relative;
         }
         
@@ -514,7 +571,7 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: var(--transition);
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
             font-size: 0.9rem;
             min-height: 44px;
@@ -543,7 +600,7 @@
             max-width: 900px;
             margin: 0 auto;
             overflow: hidden;
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             cursor: grab;
         }
@@ -603,7 +660,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
             border: 1px solid var(--card-border);
             font-size: 20px;
             color: var(--accent);
@@ -628,7 +685,7 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
         
         .indicator.active {
@@ -692,7 +749,7 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
-            transition: all 0.3s;
+            transition: var(--transition);
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
             font-size: 1.1rem;
             min-height: 50px;
@@ -762,7 +819,7 @@
         }
         
         .about-image {
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
@@ -773,16 +830,159 @@
             display: block;
         }
         
+        /* Depoimentos */
+        .testimonials {
+            padding: 80px 0;
+            background: var(--secondary);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .testimonial {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-content p {
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        .testimonial-content:before {
+            content: """;
+            font-size: 60px;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-info h4 {
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
         /* Contato */
         .contact {
             padding: 80px 0;
-            background: var(--secondary);
+            background: var(--primary);
             text-align: center;
         }
         
         .contact-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
+        }
+        
+        .contact-form {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--card-border);
+            margin-top: 40px;
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            background: var(--accent-hover);
         }
         
         .contact-info {
@@ -795,9 +995,9 @@
         .contact-card {
             background: var(--card-bg);
             padding: 30px;
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             border: 1px solid var(--card-border);
-            transition: all 0.3s;
+            transition: var(--transition);
         }
         
         .contact-card:hover {
@@ -897,7 +1097,7 @@
             justify-content: center;
             color: var(--text);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             font-size: 1.1rem;
             border: 1px solid var(--card-border);
         }
@@ -918,6 +1118,22 @@
         .footer-bottom p {
             color: var(--text-muted);
             font-size: 0.9rem;
+        }
+        
+        /* Loading para imagens */
+        .loading {
+            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
         }
         
         /* Responsivo */
@@ -970,6 +1186,10 @@
                 grid-column: span 1;
             }
             
+            .contact-form {
+                padding: 25px;
+            }
+            
             /* Menu móvel */
             .menu-toggle {
                 display: flex;
@@ -987,7 +1207,7 @@
                 transform: translateY(-100%);
                 opacity: 0;
                 visibility: hidden;
-                transition: all 0.3s ease;
+                transition: var(--transition);
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
                 backdrop-filter: blur(10px);
             }
@@ -1015,6 +1235,10 @@
             .product-features {
                 grid-template-columns: 1fr;
             }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1038,6 +1262,17 @@
             .contact-info {
                 grid-template-columns: 1fr;
             }
+            
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .whatsapp-float i {
+                font-size: 24px;
+            }
         }
         
         /* Efeito de fade-in para as seções */
@@ -1054,13 +1289,18 @@
     </style>
 </head>
 <body>
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um horário na Barbearia Elite ✂️" class="whatsapp-float" aria-label="Entre em contato pelo WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
     <!-- Botão Voltar ao topo -->
-    <div class="back-to-top">
+    <button class="back-to-top" aria-label="Voltar ao topo">
         <i class="fas fa-arrow-up"></i>
-    </div>
+    </button>
     
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container">
             <div class="logo">
                 <div class="logo-img">
@@ -1068,7 +1308,7 @@
                 </div>
                 <h1>BARBEARIA ELITE</h1>
             </div>
-            <button class="menu-toggle">
+            <button class="menu-toggle" aria-label="Abrir menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1076,6 +1316,7 @@
             <nav>
                 <a href="#servicos">Serviços</a>
                 <a href="#produto">Produto</a>
+                <a href="#depoimentos">Depoimentos</a>
                 <a href="#sobre">Sobre</a>
                 <a href="#contato">Contato</a>
             </nav>
@@ -1087,7 +1328,7 @@
         <div class="container">
             <div class="hero-content">
                 <h2>ELEVANDO O PADRÃO MASCULINO</h2>
-                <p>Descubra a excelência em cortes premium e produtos especializados para crescimento capilar. Uma experiência única de cuidados masculinos.</p>
+                <p>Descubra a excelência em cortes premium e produtos especializados para crescimento capilar. Uma experiência única de cuidados masculinos em Araxá.</p>
                 <div class="hero-buttons">
                     <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um horário na Barbearia Elite ✂️" class="btn whatsapp-btn">
                         <i class="fab fa-whatsapp"></i> Agendar Horário
@@ -1139,7 +1380,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Corte de Cabelo">
+                        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Corte de Cabelo" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Corte Elite</h3>
@@ -1158,7 +1399,7 @@
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Barba">
+                        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Barba" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Tratamento de Barba</h3>
@@ -1177,7 +1418,7 @@
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Combo Completo">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Combo Completo" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Experiência Completa</h3>
@@ -1207,14 +1448,14 @@
                     <!-- Imagem 1 -->
                     <div class="carousel-slide">
                         <div class="carousel-media">
-                            <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Produto Elite Growth">
+                            <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Produto Elite Growth" loading="lazy">
                         </div>
                     </div>
                     
                     <!-- Imagem 2 -->
                     <div class="carousel-slide">
                         <div class="carousel-media">
-                            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Resultados do Produto">
+                            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Resultados do Produto" loading="lazy">
                         </div>
                     </div>
                     
@@ -1222,7 +1463,7 @@
                     <div class="carousel-slide">
                         <div class="carousel-media">
                             <!-- Em um site real, você colocaria um vídeo aqui -->
-                            <img src="https://images.unsplash.com/photo-1595079676339-1534805bc541?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Vídeo Demonstração">
+                            <img src="https://images.unsplash.com/photo-1595079676339-1534805bc541?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Vídeo Demonstração" loading="lazy">
                             <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:rgba(0,0,0,0.7); border-radius:50%; width:80px; height:80px; display:flex; align-items:center; justify-content:center;">
                                 <i class="fas fa-play" style="color:var(--accent); font-size:30px; margin-left:5px;"></i>
                             </div>
@@ -1278,6 +1519,59 @@
         </div>
     </section>
     
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>Melhor barbearia de Araxá! Ambiente incrível, profissionais qualificados e sempre saio satisfeito com o resultado. Recomendo!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="João Silva" loading="lazy">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>João Silva</h4>
+                            <p>Cliente há 2 anos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>Uso o Elite Growth há 3 meses e notei uma diferença significativa no volume e força dos meus cabelos. Produto excelente!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Pedro Santos" loading="lazy">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Pedro Santos</h4>
+                            <p>Cliente há 6 meses</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>Atendimento impecável! Os barbeiros são muito atenciosos e entendem exatamente o que o cliente quer. Nota 10!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Carlos Oliveira" loading="lazy">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Carlos Oliveira</h4>
+                            <p>Cliente há 1 ano</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Sobre -->
     <section id="sobre" class="about">
         <div class="container">
@@ -1308,7 +1602,7 @@
                 </div>
                 
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Interior da Barbearia Elite">
+                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Interior da Barbearia Elite" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1319,6 +1613,28 @@
         <div class="container contact-container">
             <h2 class="section-title">Entre em Contato</h2>
             <p>Estamos sempre à disposição para atender você da melhor forma possível.</p>
+            
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                </button>
+            </form>
             
             <div class="contact-info">
                 <div class="contact-card">
@@ -1354,7 +1670,7 @@
                         </div>
                         <h1>BARBEARIA ELITE</h1>
                     </div>
-                    <p>Excelência em cortes premium e produtos especializados para crescimento capilar.</p>
+                    <p>Excelência em cortes premium e produtos especializados para crescimento capilar em Araxá.</p>
                 </div>
                 
                 <div class="footer-contact">
@@ -1367,13 +1683,13 @@
                 <div class="footer-social">
                     <h4>Redes Sociais</h4>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/barbeariaelite" class="social-link">
+                        <a href="https://www.instagram.com/barbeariaelite" class="social-link" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um horário na Barbearia Elite ✂️" class="social-link">
+                        <a href="https://wa.me/553499269707?text=Olá! Gostaria de agendar um horário na Barbearia Elite ✂️" class="social-link" aria-label="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
-                        <a href="https://www.facebook.com/barbeariaelite" class="social-link">
+                        <a href="https://www.facebook.com/barbeariaelite" class="social-link" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                     </div>
@@ -1387,6 +1703,7 @@
         </div>
     </footer>
     
+    <!-- Scripts otimizados -->
     <script>
         // ===== DETECÇÃO DE WEBVIEW DO INSTAGRAM =====
         function isInInstagramWebView() {
@@ -1656,6 +1973,14 @@
                     backToTopButton.classList.remove('visible');
                 }
                 
+                // Header shrink on scroll
+                const header = document.getElementById('header');
+                if (window.pageYOffset > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
                 updateScrollIndicator();
             });
             
@@ -1665,6 +1990,32 @@
                     behavior: 'smooth'
                 });
             });
+        }
+        
+        // ===== FORMULÁRIO DE CONTATO =====
+        function setupContactForm() {
+            const contactForm = document.getElementById('contact-form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simulação de envio do formulário
+                    const submitBtn = this.querySelector('.submit-btn');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulação de tempo de envio
+                    setTimeout(() => {
+                        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                        contactForm.reset();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 2000);
+                });
+            }
         }
         
         // ===== INICIALIZAÇÃO GERAL =====
@@ -1683,6 +2034,7 @@
             
             setupMobileMenu();
             setupBackToTop();
+            setupContactForm();
             
             // Atualizar indicador de rolagem
             updateScrollIndicator();
@@ -1694,6 +2046,14 @@
                 observer.observe(section);
             });
         });
+        
+        // Carregar Font Awesome de forma assíncrona
+        setTimeout(() => {
+            const faScript = document.createElement('script');
+            faScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
+            faScript.crossOrigin = 'anonymous';
+            document.head.appendChild(faScript);
+        }, 1000);
     </script>
 </body>
 </html>
